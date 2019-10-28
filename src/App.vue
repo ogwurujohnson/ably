@@ -34,7 +34,11 @@ var ably = new Ably.Realtime({
 });
 var channel = ably.channels.get("friendsroom");
 export default {
-  name: 'app',
+  name: "app",
+  mounted() {
+    const name = prompt('To get started, input your name in the field below and locate your friends around based on your location, please turn on your location setting \n What is your name?')
+    this.usersName = name
+  },
 }
 </script>
 
