@@ -119,6 +119,15 @@ export default {
         }
       );
     },
+    updateRoom(data) {
+      channel.presence.update(data, function(err) {
+        if (err) {
+          return console.error("Error updating presence data");
+        }
+        console.log("We have successfully updated our data");
+      });
+    }
+  },
 </script>
 
 <style>
