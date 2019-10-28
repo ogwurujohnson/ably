@@ -22,6 +22,17 @@
 </template>
 
 <script>
+import axios from "axios";
+import * as Ably from "ably";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
+var ably = new Ably.Realtime("");
+var ably = new Ably.Realtime({
+  key: "",
+  clientId: `${Math.random() * 1000000}`
+});
+var channel = ably.channels.get("friendsroom");
 export default {
   name: 'app',
 }
