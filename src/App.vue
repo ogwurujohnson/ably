@@ -79,6 +79,19 @@ export default {
       // })
     }, 3000);
   },
+  data() {
+    return {
+      usersName: null,
+      gettingLocation: true,
+      initialPosition: {
+        lat: 10,
+        lng: 10
+      },
+      zoom: 11,
+      markers: null,
+      userlocation: []
+    };
+  },
 }
 </script>
 
