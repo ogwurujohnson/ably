@@ -92,11 +92,15 @@ export default {
       userlocation: []
     };
   },
+  components: {
+    Loading
+  },
+  methods: {
     fetchData() {
       if (!("geolocation" in navigator)) {
         this.errorStr = "Geolocation is not available.";
         return;
-}
+      }
       this.gettingLocation = true;
       navigator.geolocation.watchPosition(
         pos => {
@@ -119,6 +123,7 @@ export default {
         }
       );
     },
+
     updateRoom(data) {
       channel.presence.update(data, function(err) {
         if (err) {
@@ -128,7 +133,88 @@ export default {
       });
     }
   },
+  watch: {
+    membersdata: function() {
+      console.log(membersdata);
+    }
+  }
+};
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  background: #becbd8;
+  height: 100vh;
+  width: 100%;
+}
+
+main {
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  width: 25%;
+  margin: 20px auto;
+  height: 75%;
+}
+h1 {
+  line-height: 0;
+  font-size: 7em;
+}
+
+sup {
+  font-size: 20px;
+}
+
+span {
+  font-size: 20px;
+}
+
+img {
+  width: 150px;
+  vertical-align: top;
+}
+
+.details {
+  color: #35495e;
+  font-weight: bold;
+  text-align: center;
+}
+
+header {
+  margin: 0;
+  height: 56px;
+  padding: 0 16px 0 24px;
+  background-color: #35495e;
+  color: #ffffff;
+}
+
+header span {
+  display: block;
+  position: relative;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 450px) {
+  main {
+    box-shadow: none;
+    width: 100%;
+  }
+}
 </style>
